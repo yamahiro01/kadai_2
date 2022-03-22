@@ -34,7 +34,7 @@ def set_driver(hidden_chrome: bool=False):
     return Chrome(service=service, options=options)
 
 
-def main():
+def main(is_option: bool = False, page_limit: int=5, hidden_chrome: bool=False):
     '''
     main処理
     '''
@@ -45,8 +45,13 @@ def main():
     driver = set_driver()
     
     # Webサイトを開く
-    driver.get("https://tenshoku.mynavi.jp/")
-    time.sleep(5)
+    if is_option:
+         # Option課題の場合は、URLを直接編集する
+        driver.get(f"https://tenshoku.mynavi.jp/list/kw{search_keyword}/?jobsearchType=14&searchType=18")
+        time.sleep(5)
+    else:
+        driver.get("https://tenshoku.mynavi.jp/")
+        time.sleep(5)
     
     '''
     ポップアップを閉じる
