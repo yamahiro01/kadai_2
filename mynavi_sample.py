@@ -84,13 +84,6 @@ def main(is_option: bool = False, page_limit: int=5, hidden_chrome: bool=False):
     
     # 空のDataFrame作成
     df = pd.DataFrame()
-
-    # 1ページ分繰り返し
-    # print(len(name_elms))
-    '''
-    name_elmsには１ページ分の情報が格納されているのでforでループさせて１つづつ取り出して、Dataframeに格納する
-    '''
-    # name_elm = driver.find_element(by=By.CLASS_NAME, value="cassetteRecruit__name").text
     
     # 無限ループ
     while True:
@@ -118,7 +111,8 @@ def main(is_option: bool = False, page_limit: int=5, hidden_chrome: bool=False):
         except:
             print("最終ページです")
             break
-        
+    
+    # CSV取得    
     df.to_csv("求人一覧.csv", encoding="utf-8_sig")
         
         
